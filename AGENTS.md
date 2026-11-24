@@ -101,6 +101,8 @@ pyright in strict mode is the one checker that gates CI. Keep it at 0 errors and
 - The Examples page embeds the running apps from `examples/`. CI copies them into
   the built site (see `.github/workflows/docs.yml`), so they show up only in
   the deployed docs, not in `zensical serve`.
+- Write paths in raw HTML (like an iframe `src`) relative to the `.md` file, as
+  you would a Markdown link. Zensical rewrites them for the page's final URL.
 - `uv run --group docs zensical build --strict` must pass. CI checks it on every PR.
 
 ## Workflow
