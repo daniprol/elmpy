@@ -1,0 +1,82 @@
+# Documentation site, built with Zensical (https://zensical.org).
+# Preview: uv run --group docs zensical serve
+
+[project]
+site_name = "elmpy"
+site_description = "The Elm Architecture for Python in the browser, running on Pyodide."
+site_url = "https://daniprol.github.io/elmpy/"
+repo_url = "https://github.com/daniprol/elmpy"
+repo_name = "daniprol/elmpy"
+copyright = "MIT License"
+extra_css = ["stylesheets/elmpy.css"]
+nav = [
+  { "Home" = "index.md" },
+  { "Get started" = "get-started.md" },
+  { "How it works" = "how-it-works.md" },
+  { "Views" = "views.md" },
+  { "Testing" = "testing.md" },
+  { "Examples" = "examples.md" },
+  { "API reference" = "reference.md" },
+]
+
+[project.theme]
+language = "en"
+features = [
+  "content.code.copy",
+  "navigation.footer",
+  "navigation.instant",
+  "navigation.top",
+  "search.highlight",
+  "toc.follow",
+]
+
+# An elm is a tree: a deciduous tree for the logo, and leaf greens with a
+# touch of Python yellow for the colors (see stylesheets/elmpy.css).
+[project.theme.icon]
+logo = "lucide/tree-deciduous"
+repo = "fontawesome/brands/github"
+
+[project.theme.font]
+text = "Figtree"
+code = "JetBrains Mono"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.plugins.mkdocstrings.handlers.python]
+paths = ["src"]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+show_root_heading = true
+show_source = false
+members_order = "source"
+show_signature_annotations = true
+separate_signature = true
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+toc.permalink = true
+pymdownx.details = {}
+pymdownx.highlight.anchor_linenums = true
+pymdownx.inlinehilite = {}
+pymdownx.snippets.base_path = ["."]
+pymdownx.snippets.check_paths = true
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+pymdownx.tabbed.alternate_style = true

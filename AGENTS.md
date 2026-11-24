@@ -28,6 +28,7 @@ examples/
   todo/         input, form submit, checkboxes, a list
 tests/          library tests, plus type_checks.py for pyright
 e2e/            Playwright tests: the examples in real Chromium on Pyodide
+docs/           the documentation site (Zensical, config in zensical.toml)
 typings/js.pyi  minimal stub for Pyodide's `js` module
 ```
 
@@ -40,6 +41,7 @@ uv run pytest                  # tests only
 uv run pyright                 # type check only (strict)
 uv run playwright install chromium && uv run pytest e2e   # browser tests (slower)
 uv run python -m http.server   # then open http://localhost:8000/examples/todo/
+uv run --group docs zensical serve   # preview the docs at http://localhost:8000/
 ```
 
 Run `uv run prek run --all-files` before every commit. CI runs exactly that,
@@ -88,6 +90,18 @@ pyright in strict mode is the one checker that gates CI. Keep it at 0 errors and
 - Example apps have their tests next to them (`examples/*/test_*.py`).
 - `e2e/` checks each example once in a real browser: that it loads and the main
   interactions work. Keep the detailed checks in the fast fake-DOM tests.
+
+## Docs
+
+- Pages are short and plain. Show code, then explain it in a sentence or two.
+- Show real code with snippets (`--8<-- "examples/counter/counter.py"`)
+  instead of copying it, so the docs cannot drift from the examples. Include
+  whole files: line ranges break silently when the file changes.
+- The API reference is generated from docstrings. Write docstrings for readers.
+- The Examples page embeds the running apps from `examples/`. CI copies them into
+  the built site (see `.github/workflows/docs.yml`), so they show up only in
+  the deployed docs, not in `zensical serve`.
+- `uv run --group docs zensical build --strict` must pass. CI checks it on every PR.
 
 ## Workflow
 
