@@ -7,7 +7,7 @@ browser on Pyodide. They may take a few seconds to start.
 
 ## Counter
 
-<iframe class="elmpy-demo" src="../live/examples/counter/" title="Counter example" loading="lazy"
+<iframe class="elmpy-demo" src="live/examples/counter/" title="Counter example" loading="lazy"
   sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
 
 ??? example "counter.py"
@@ -19,7 +19,7 @@ browser on Pyodide. They may take a few seconds to start.
 
 A text input, a form, checkboxes and a list that grows and shrinks.
 
-<iframe class="elmpy-demo" src="../live/examples/todo/" title="Todo example" loading="lazy"
+<iframe class="elmpy-demo" src="live/examples/todo/" title="Todo example" loading="lazy"
   sandbox="allow-scripts allow-same-origin allow-forms"></iframe>
 
 ??? example "todo.py"

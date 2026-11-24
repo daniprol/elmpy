@@ -4,10 +4,10 @@
 
 ```mermaid
 flowchart LR
-    click["User clicks"] -->|message| update
+    user["User clicks or types"] -->|message| update
     update -->|new model| view
     view -->|new Html| patch["Patch the DOM"]
-    patch --> click
+    patch --> user
 ```
 
 1. An event handler turns a DOM event into a **message**, such as `ClickedIncrement()`.
