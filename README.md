@@ -9,6 +9,8 @@ redraws only what changed.
 
 > Status: milestone 1, a "sandbox" with no side effects (no HTTP, no timers yet).
 
+📖 **Docs and live examples: <https://daniprol.github.io/elmpy/>**
+
 ## Quickstart
 
 You need [uv](https://docs.astral.sh/uv/).

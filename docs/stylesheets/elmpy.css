@@ -1,0 +1,106 @@
+/* elmpy's look: elm-leaf greens, a touch of Python yellow, and a bolder heading font. */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap");
+
+:root {
+  --elmpy-leaf: #2f7d4f;
+  --elmpy-leaf-light: #4f9d6c;
+  --elmpy-leaf-dark: #1e5a37;
+  --elmpy-yellow: #f3b52f;
+  --elmpy-heading-font: "Bricolage Grotesque", var(--md-text-font-family), sans-serif;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--elmpy-leaf);
+  --md-primary-fg-color--light: var(--elmpy-leaf-light);
+  --md-primary-fg-color--dark: var(--elmpy-leaf-dark);
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: var(--elmpy-leaf-dark);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--elmpy-leaf) 12%, transparent);
+  --md-typeset-a-color: var(--elmpy-leaf);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 150;
+  --md-primary-fg-color: var(--elmpy-leaf);
+  --md-primary-fg-color--light: var(--elmpy-leaf-light);
+  --md-primary-fg-color--dark: var(--elmpy-leaf-dark);
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: var(--elmpy-yellow);
+  --md-accent-fg-color--transparent: color-mix(in srgb, var(--elmpy-yellow) 14%, transparent);
+  --md-typeset-a-color: #7fd3a0;
+}
+
+/* A thin leaf-to-sun stripe under the header */
+.md-header {
+  border-bottom: 3px solid;
+  border-image: linear-gradient(90deg, var(--elmpy-leaf), var(--elmpy-yellow)) 1;
+}
+
+/* Collapsible code examples in leaf green instead of the default purple */
+.md-typeset details.example,
+.md-typeset .admonition.example {
+  border-color: var(--elmpy-leaf);
+}
+
+.md-typeset .example > summary::before,
+.md-typeset .example > summary::after,
+.md-typeset .example > .admonition-title::before {
+  background-color: var(--elmpy-leaf-light);
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-header__title {
+  font-family: var(--elmpy-heading-font);
+  letter-spacing: -0.01em;
+}
+
+/* Home page banner */
+.elmpy-hero {
+  padding: 2rem 0 1rem;
+}
+
+.elmpy-hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.elmpy-hero p {
+  font-size: 1.15rem;
+  max-width: 36rem;
+}
+
+.elmpy-hero mark {
+  background: linear-gradient(transparent 60%, color-mix(in srgb, var(--elmpy-yellow) 55%, transparent) 60%);
+  color: inherit;
+}
+
+/* Home page: code on the left, the same code running on the right */
+.elmpy-split {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.elmpy-split .elmpy-demo {
+  height: 10rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 60em) {
+  .elmpy-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* A running example app, embedded in a page */
+.elmpy-demo {
+  width: 100%;
+  height: 22rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
