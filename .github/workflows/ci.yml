@@ -18,3 +18,15 @@ jobs:
         run: uv sync --locked
       - name: Run all checks (the same hooks as `git commit`)
         run: uv run prek run --all-files --show-diff-on-failure
+
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.4.0
+      - name: Install Python and dependencies
+        run: uv sync --locked
+      - name: Install Chromium
+        run: uv run playwright install --with-deps chromium
+      - name: Run the examples in a real browser
+        run: uv run pytest e2e

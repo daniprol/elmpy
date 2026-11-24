@@ -3,6 +3,8 @@ name = "elmpy"
 version = "0.1.0"
 description = "The Elm Architecture for Python in the browser, running on Pyodide."
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.14"
 dependencies = []
 
@@ -12,6 +14,7 @@ dev = [
     "pyodide-py==314.0.8", # types for `pyodide.ffi`; must match the Pyodide version in examples/boot.js
     "pyright==1.1.414",    # pinned: new releases can change what counts as an error
     "pytest>=9.2.0",
+    "pytest-playwright>=0.10.0", # browser tests in e2e/
     "ruff>=0.17.6",
 ]
 
@@ -44,11 +47,11 @@ select = [
 known-first-party = ["elmpy"]
 
 [tool.pyright]
-include = ["src", "tests", "examples"]
+include = ["src", "tests", "examples", "e2e"]
 pythonVersion = "3.14"
 typeCheckingMode = "strict"
 reportUnnecessaryTypeIgnoreComment = "error"
 
 [tool.pytest]
-testpaths = ["tests", "examples"]
+testpaths = ["tests", "examples"] # browser tests in e2e/ run separately: `uv run pytest e2e`
 addopts = ["--strict-markers"]
