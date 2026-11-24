@@ -1,0 +1,54 @@
+[project]
+name = "elmpy"
+version = "0.1.0"
+description = "The Elm Architecture for Python in the browser, running on Pyodide."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "prek>=0.5.11",
+    "pyodide-py==314.0.8", # types for `pyodide.ffi`; must match the Pyodide version in examples/boot.js
+    "pyright==1.1.414",    # pinned: new releases can change what counts as an error
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "examples/counter", "examples/todo"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "RUF", # ruff-specific rules
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The fake DOM copies the browser's camelCase names, such as `appendChild`.
+"src/elmpy/testing.py" = ["N802", "N815"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["elmpy"]
+
+[tool.pyright]
+include = ["src", "tests", "examples"]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+reportUnnecessaryTypeIgnoreComment = "error"
+
+[tool.pytest]
+testpaths = ["tests", "examples"]
+addopts = ["--strict-markers"]
