@@ -94,6 +94,7 @@ To make your own app, copy [`examples/counter/`](examples/counter/) and change i
 ```sh
 uv run prek install          # run the checks on every commit
 uv run prek run --all-files  # ruff, pyright (strict), pytest and file hygiene; CI runs the same
+uv run playwright install chromium && uv run pytest e2e   # the examples in a real browser
 ```
 
 See [AGENTS.md](AGENTS.md) for conventions.
@@ -102,3 +103,7 @@ See [AGENTS.md](AGENTS.md) for conventions.
 
 Commands and subscriptions (HTTP, timers), keyed lists, routing, time-travel
 debugging, and a release on PyPI.
+
+## License
+
+[MIT](LICENSE)

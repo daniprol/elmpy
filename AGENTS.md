@@ -27,6 +27,7 @@ examples/
   counter/      smallest app: counter.py (the app), main.py (browser entry), test
   todo/         input, form submit, checkboxes, a list
 tests/          library tests, plus type_checks.py for pyright
+e2e/            Playwright tests: the examples in real Chromium on Pyodide
 typings/js.pyi  minimal stub for Pyodide's `js` module
 ```
 
@@ -37,10 +38,12 @@ uv sync                        # install Python 3.14 and dev tools
 uv run prek run --all-files    # everything CI runs: hygiene, uv lock, ruff, pyright, pytest
 uv run pytest                  # tests only
 uv run pyright                 # type check only (strict)
+uv run playwright install chromium && uv run pytest e2e   # browser tests (slower)
 uv run python -m http.server   # then open http://localhost:8000/examples/todo/
 ```
 
-Run `uv run prek run --all-files` before every commit. CI runs exactly that.
+Run `uv run prek run --all-files` before every commit. CI runs exactly that,
+plus the browser tests in `e2e/`.
 
 ## Rules
 
@@ -83,6 +86,8 @@ pyright in strict mode is the one checker that gates CI. Keep it at 0 errors and
 - New DOM features need the matching method on the fake DOM. Keep the fake
   small: implement only what `vdom.py` calls.
 - Example apps have their tests next to them (`examples/*/test_*.py`).
+- `e2e/` checks each example once in a real browser: that it loads and the main
+  interactions work. Keep the detailed checks in the fast fake-DOM tests.
 
 ## Workflow
 
